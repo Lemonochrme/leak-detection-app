@@ -18,7 +18,7 @@ const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulation d'une requête API pour récupérer les données des capteurs
+    // Simulation of an API request to fetch sensor data
     const fetchSensorData = async () => {
       const response = await fetch('/api/sensors');
       const data = await response.json();
@@ -47,12 +47,21 @@ const Dashboard = () => {
     ],
   };
 
-  const options = {
+  const chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        position: 'top',
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: 'Months',
+        },
+      },
+      y: {
+        title: {
+          display: true,
+          text: 'Liters',
+        },
       },
     },
   };
@@ -92,8 +101,8 @@ const Dashboard = () => {
 
         <div className="bg-white p-6 rounded-lg shadow-md mt-8">
           <h2 className="text-xl font-semibold mb-4">Water Usage Over Time</h2>
-          <div className="relative w-full h-64">
-            <Line data={waterUsageData} options={options} />
+          <div className="relative w-full h-96"> {/* Adjust height as needed */}
+            <Line data={waterUsageData} options={chartOptions} />
           </div>
         </div>
       </div>
