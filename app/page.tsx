@@ -65,7 +65,7 @@ const Dashboard = () => {
         <div className="bg-white p-6 rounded-lg shadow-md mt-8">
           <h2 className="text-xl font-semibold mb-4">Water Usage Over Time</h2>
           <div className="relative w-full h-64 bg-gray-200">
-            <p className="text-center py-24">[Graphique d'utilisation d'eau]</p>
+            <p className="text-center py-24">[Graphique d utilisation d eau]</p>
           </div>
         </div>
       </div>
