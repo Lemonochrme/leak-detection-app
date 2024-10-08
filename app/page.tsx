@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
+import Lottie from 'react-lottie';
+import animationData from './lottie.json';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -19,7 +21,6 @@ const Dashboard = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
-    // Simulation of an API request to fetch sensor data
     const fetchSensorData = async () => {
       const response = await fetch('/api/sensors');
       const data = await response.json();
@@ -30,8 +31,22 @@ const Dashboard = () => {
     fetchSensorData();
   }, []);
 
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
+
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <Lottie options={defaultOptions} height={100} width={150} />
+      </div>
+    );
+    
   }
 
   const waterUsageData = {
